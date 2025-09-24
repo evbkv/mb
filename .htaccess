@@ -1,0 +1,26 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI}::%{SCRIPT_FILENAME} ^(.*)::(.*?)\1$
+RewriteRule ^ - [E=BASE:%2]
+
+RewriteCond %{THE_REQUEST} \s/mb/editor\.php[?\s] [NC]
+RewriteRule ^mb/editor\.php$ %{ENV:BASE}/editor/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^editor/?$ mb/editor.php [L]
+
+RewriteCond %{THE_REQUEST} \s/mb/lastposts\.php[?\s] [NC]
+RewriteRule ^mb/lastposts\.php$ %{ENV:BASE}/lastposts/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^lastposts/?$ mb/lastposts.php [L]
+
+RewriteCond %{THE_REQUEST} \s/([A-Za-z0-9-]+)\.php[?\s] [NC]
+RewriteCond %{REQUEST_URI} !/index\.php$ [NC]
+RewriteRule ^([A-Za-z0-9-]+)\.php$ %{ENV:BASE}%1/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([A-Za-z0-9-]+)/?$ $1.php [L,QSA]
