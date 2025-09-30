@@ -54,6 +54,7 @@ $currentPosts = array_slice($posts, ($currentPage - 1) * $indexPosts, $indexPost
 <title><?= $blogTitle; ?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="<?= $blogDescription; ?>">
 <link rel="icon" type="image/svg+xml" href="<?= h($basePath) ?>/img/favicon.svg">
 <link rel="stylesheet" href="<?= h($basePath) ?>/mb/style.css?<?= rand(); ?>">
 </head>
