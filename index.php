@@ -23,6 +23,9 @@ function extract_post_from_file($filepath) {
 $scriptName = $_SERVER['SCRIPT_NAME'];
 $basePath = rtrim(dirname($scriptName), '/\\');
 if ($basePath==='/' || $basePath==='\\') $basePath='';
+$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'];
+$url = $scheme . '://' . $host . $basePath . '/' . $slug;
 
 $root = __DIR__;
 $posts = [];
@@ -56,6 +59,7 @@ $currentPosts = array_slice($posts, ($currentPage - 1) * $indexPosts, $indexPost
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="<?= $blogDescription; ?>">
 <link rel="icon" type="image/svg+xml" href="<?= h($basePath) ?>/img/favicon.svg">
+<link rel="canonical" href="<?= h($url) ?>">
 <link rel="stylesheet" href="<?= h($basePath) ?>/mb/style.css?<?= rand(); ?>">
 </head>
 <body>
