@@ -45,6 +45,7 @@ function h($s){ return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="<?= h($description) ?>">
 <meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="<?= h($basePath) ?>/img/favicon.svg">
 <link rel="canonical" href="<?= h($url) ?>">
 <link rel="alternate" hreflang="<?= $lang[0]; ?>" href="<?= h($url) ?>">
 <meta property="og:site_name" content="<?= h($title) ?>">
